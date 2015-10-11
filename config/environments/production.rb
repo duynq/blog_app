@@ -84,13 +84,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'still-beach-2312.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            'quangduyx188@gmail.com',
-    password:             'Nguyenduy93',
-    authentication:       'plain',
-    enable_starttls_auto: true
+  ActionMailer::Base.smtp_settings = {
+    address:         'smtp.gmail.com',
+    port:            '587',
+    authentication:  :plain,
+    enable_starttls_auto: true,
+    user_name:       ENV['GMAIL_USERNAME'],
+    password:        ENV['GMAIL_PASSWORD'],
+    domain:          'heroku.com',
   }
 end
